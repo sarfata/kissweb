@@ -1,0 +1,20 @@
+{
+  "author": "Thomas Sarlandie <thomas@sarlandie.net> (http://www.sarfata.org)",
+  "name": "kissweb",
+  "description": "KISS Web server is a very simple web server written in nodejs.",
+  "version": "0.0.0",
+  "homepage": "http://www.sarfata.org/kissweb/",
+  "repository": {
+    "url": "git://github.com/sarfata/kissweb.git"
+  },
+  "main": "lib/kissweb.js",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
