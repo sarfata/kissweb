@@ -2,6 +2,10 @@
 
 var kissweb = require('../lib/kissweb');
 
-var server = new kissweb(8080, "/Users/thomas/work/sarfata.org/");
+if (process.argv.length < 4) {
+  console.error("%s: <listening port> <root directory>", process.argv[1]);
+  process.exit(-1);
+}
+var server = new kissweb(process.argv[2], process.argv[3]);
 
 server.work();
