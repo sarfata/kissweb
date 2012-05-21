@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var kissweb = require('../lib/kissweb');
+
+var server = new kissweb(8080, "/Users/thomas/work/sarfata.org/");
+
+server.work();

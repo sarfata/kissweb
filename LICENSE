@@ -1,30 +1,3 @@
-KISSWeb
-=======
-
-KISS Web server is a very simple web server written in nodejs. 
-
-Purpose
--------
-
-It is designed to use few external libraries (to make installation and dependency management easy and also
-because it's fun to write yet-another-web-server logic).
-
-It's main goal is to make it easy to build light and simple website for personal homepage
-or minimal-viable-products (ie: building a few pages to see if a concept could be sold).
-
-Installation
-------------
-
-$ npm install kissweb
-
-Running
--------
-
-$ kissweb <rootdirectory>
-
-License
--------
-
 Copyright 2012 Thomas Sarlandie 
 
    Licensed under the Apache License, Version 2.0 (the "License");
