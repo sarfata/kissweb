@@ -15,12 +15,12 @@ or minimal-viable-products (ie: building a few pages to see if a concept could b
 Installation
 ------------
 
-$ npm install kissweb
+  $ npm install kissweb
 
 Running
 -------
 
-$ kissweb <rootdirectory>
+  $ bin/kissweb <webserver port> <rootdirectory>
 
 License
 -------
