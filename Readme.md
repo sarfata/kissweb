@@ -1,7 +1,7 @@
 KISSWeb
 =======
 
-KISS Web server is a very simple web server written in nodejs. 
+KISS Web server is a very simple web server written in nodejs.
 
 Purpose
 -------
@@ -11,6 +11,10 @@ because it's fun to write yet-another-web-server logic).
 
 It's main goal is to make it easy to build light and simple website for personal homepage
 or minimal-viable-products (ie: building a few pages to see if a concept could be sold).
+
+WARNING - This is an exercise in JavaScript and should not be used by anone else than me right now. Lots of things
+have been rewritten for the pleasure of the exercise when it would probably make a lot more sense to use existing
+libraries. - WARNING
 
 Installation
 ------------

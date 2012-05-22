@@ -41,5 +41,17 @@ describe('kissweb', function() {
     it('should send text/css mimetype for css files', function() {
       web.lookupMimeType('/stylesheets/main.css').should.eql('text/css');
     });
+    
+    it('should have mimetype html for html files', function() {
+      web.lookupMimeType('/index.html').should.eql('text/html');
+    });
+    
+    it('should have mimetype image/jpeg for jpg files', function() {
+      web.lookupMimeType('/thomas.jpg').should.eql('image/jpeg');
+      web.lookupMimeType('/thomas.jpeg').should.eql('image/jpeg');
+      web.lookupMimeType('/thomas.JPG').should.eql('image/jpeg');
+      web.lookupMimeType('/thomas.JPEG').should.eql('image/jpeg');      
+    })
+    
   });
 });

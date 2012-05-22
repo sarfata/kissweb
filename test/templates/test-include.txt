@@ -1,0 +1,1 @@
+BEFORE <!include simple.txt/> AFTER
