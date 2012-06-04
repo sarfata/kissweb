@@ -14,7 +14,9 @@
   "scripts": {
     "test": "mocha test/*.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "marked": ""
+  },
   "devDependencies": {
     "mocha": "",
     "should": ""
