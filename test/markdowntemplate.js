@@ -54,6 +54,13 @@ describe('markdowntemplate', function() {
     text.should.eql(fs.readFileSync(testFilePath("test-excerpt.md.output"), "UTF-8"));
   });
   
+  it('the excerpt should be the full content if the excerpt tag is not found', function() {
+    var t = new mdt(testFilePath('test-markdown.md'), true);
+    
+    var text = t.execute();
+    
+    text.should.eql(fs.readFileSync(testFilePath("test-markdown.md.output"), "UTF-8"));
+  });
 });
 
 function testFilePath(file) {
