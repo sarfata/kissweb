@@ -1,5 +1,5 @@
 var should = require('should');
-var mdt = require('../lib/markdowntemplate');
+var md = require('../lib/markdown');
 var fs = require('fs');
 var path = require('path');
 
@@ -7,7 +7,7 @@ describe('markdowntemplate', function() {
   it('should throw an error when given an unexisting template', function() {
     var e = null;
     try {
-      var t = new mdt("/tmp/this file does not exist");
+      var t = new md("/tmp/this file does not exist");
     }
     catch (err) {
       e = err;
@@ -17,13 +17,13 @@ describe('markdowntemplate', function() {
   
   it('should return an empty string if the file is empty', function() {
     var file = testFilePath("empty.md");
-    var t = new mdt(file);    
+    var t = new md(file);    
     t.execute().should.eql("");
   });
   
   it('should add some <p> when the template has no special marker', function() {
     var file = testFilePath("simple.md");
-    var t = new mdt(file);
+    var t = new md(file);
     
     var text = t.execute();
     
@@ -31,7 +31,7 @@ describe('markdowntemplate', function() {
   });
   
   it('should perform markdown conversion', function() {
-    var t = new mdt(testFilePath("test-markdown.md"));
+    var t = new md(testFilePath("test-markdown.md"));
     
     var text = t.execute();
     
@@ -39,7 +39,7 @@ describe('markdowntemplate', function() {
   });
   
   it('should stop before the marker if called with a second true argument', function() {
-    var t = new mdt(testFilePath('test-excerpt.md'), true);
+    var t = new md(testFilePath('test-excerpt.md'), true);
     
     var text = t.execute();
     
@@ -47,7 +47,7 @@ describe('markdowntemplate', function() {
   });
   
   it('should not include the excerpt marker if called without a second true argument', function() {
-    var t = new mdt(testFilePath('test-excerpt.md'));
+    var t = new md(testFilePath('test-excerpt.md'));
     
     var text = t.execute();
     
@@ -55,7 +55,7 @@ describe('markdowntemplate', function() {
   });
   
   it('the excerpt should be the full content if the excerpt tag is not found', function() {
-    var t = new mdt(testFilePath('test-markdown.md'), true);
+    var t = new md(testFilePath('test-markdown.md'), true);
     
     var text = t.execute();
     
