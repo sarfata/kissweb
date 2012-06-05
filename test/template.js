@@ -60,8 +60,25 @@ describe('template', function() {
     var t = new template(testRoot(), file);
     var text = t.execute();
     
-    text.should.eql("<html><body>" + fs.readFileSync(testFilePath("test1.html"), "UTF-8") + "</body></html>");
+    text.should.eql(fs.readFileSync(testFilePath("test-include-md.html.output"), "UTF-8"));
   });
+  
+  it('should only include up to the excerpt marker if called with excerpt', function() {
+    var file = testFilePath("test-include-md-excerpt.html");
+    var t = new template(testRoot(), file);
+    var text = t.execute();
+    
+    text.should.eql(fs.readFileSync(testFilePath("test-include-md-excerpt.html.output"), "UTF-8"));
+  });
+
+  it('should show full content if called without excerpt', function() {
+    var file = testFilePath("test-include-md-notexcerpt.html");
+    var t = new template(testRoot(), file);
+    var text = t.execute();
+    
+    text.should.eql(fs.readFileSync(testFilePath("test-include-md-notexcerpt.html.output"), "UTF-8"));
+  });
+
 });
 
 function testRoot(subdirectory) {

@@ -3,7 +3,7 @@ var mdt = require('../lib/markdowntemplate');
 var fs = require('fs');
 var path = require('path');
 
-describe('template', function() {
+describe('markdowntemplate', function() {
   it('should throw an error when given an unexisting template', function() {
     var e = null;
     try {
@@ -16,13 +16,13 @@ describe('template', function() {
   });
   
   it('should return an empty string if the file is empty', function() {
-    var file = testFilePath("empty.txt");
+    var file = testFilePath("empty.md");
     var t = new mdt(file);    
     t.execute().should.eql("");
   });
   
   it('should add some <p> when the template has no special marker', function() {
-    var file = testFilePath("simple.txt");
+    var file = testFilePath("simple.md");
     var t = new mdt(file);
     
     var text = t.execute();
@@ -31,17 +31,31 @@ describe('template', function() {
   });
   
   it('should perform markdown conversion', function() {
-    var t = new mdt(testFilePath("test1.md"));
+    var t = new mdt(testFilePath("test-markdown.md"));
     
     var text = t.execute();
     
-    fs.writeFileSync("/tmp/test1.html", text, "UTF-8");
+    text.should.eql(fs.readFileSync(testFilePath("test-markdown.md.output"), "UTF-8"));
+  });
+  
+  it('should stop before the marker if called with a second true argument', function() {
+    var t = new mdt(testFilePath('test-excerpt.md'), true);
     
-    text.should.eql(fs.readFileSync(testFilePath("test1.html"), "UTF-8"));
+    var text = t.execute();
+    
+    text.should.eql(fs.readFileSync(testFilePath("test-excerpt.md.excerpt-output"), "UTF-8"));
+  });
+  
+  it('should not include the excerpt marker if called without a second true argument', function() {
+    var t = new mdt(testFilePath('test-excerpt.md'));
+    
+    var text = t.execute();
+    
+    text.should.eql(fs.readFileSync(testFilePath("test-excerpt.md.output"), "UTF-8"));
   });
   
 });
 
 function testFilePath(file) {
-  return path.dirname(__filename) + "/templates/" + file;
+  return path.dirname(__filename) + "/markdown/" + file;
 }
