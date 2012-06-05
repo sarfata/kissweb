@@ -53,7 +53,15 @@ describe('template', function() {
     var text = t.execute();
     
     text.should.eql(fs.readFileSync(testFilePath("simple.txt"), "UTF-8"));
-  })
+  });
+  
+  it('should call the markdown converter ', function() {
+    var file = testFilePath("test-include-md.html");
+    var t = new template(testRoot(), file);
+    var text = t.execute();
+    
+    text.should.eql("<html><body>" + fs.readFileSync(testFilePath("test1.html"), "UTF-8") + "</body></html>");
+  });
 });
 
 function testRoot(subdirectory) {
