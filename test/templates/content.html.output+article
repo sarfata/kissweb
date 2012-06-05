@@ -1,0 +1,18 @@
+<html>
+<body>
+
+This is a sample container for some content dynamically injected.
+
+<h1>My first article</h1>
+<p>This is my first markdown text. Hopefully, and thanks to Gruber&#39;s vision, I&#39;ll get this right.
+
+</p>
+<h2>A title?</h2>
+<p>And some more text.
+
+</p>
+<p><em>Thanks!</em></p>
+
+
+</body>
+</html>

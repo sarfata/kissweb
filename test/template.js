@@ -1,7 +1,10 @@
 var should = require('should');
-var template = require('../lib/template');
 var fs = require('fs');
 var path = require('path');
+
+var template = require('../lib/template');
+var markdown = require('../lib/markdown');
+
 
 describe('template', function() {
   it('should throw an error when given an unexisting template', function() {
@@ -14,6 +17,8 @@ describe('template', function() {
     }
     should.exist(e);
   });
+  
+  // TODO: Refactor those tests with a big loop and just execute the same function for each file.
   
   it('should return an empty string if the file is empty', function() {
     var file = testFilePath("empty.txt");
@@ -79,6 +84,23 @@ describe('template', function() {
     text.should.eql(fs.readFileSync(testFilePath("test-include-md-notexcerpt.html.output"), "UTF-8"));
   });
 
+  it('should replace the <!content/> tag with "" if no content template was specified', function() {
+    var t = new template(testRoot(), testFilePath("content.html"));
+    
+    var text = t.execute();
+    
+    text.should.eql(fs.readFileSync(testFilePath("content.html.output"), "UTF-8"));
+  });
+  
+  it('should include the markdown in the template when it meets a <!content/> tag', function() {
+    var content = new markdown(testFilePath("article.md"));
+    var t = new template(testRoot(), testFilePath("content.html"), content);
+    
+    var text = t.execute();
+    
+    text.should.eql(fs.readFileSync(testFilePath("content.html.output+article"), "UTF-8"));
+  });
+  
 });
 
 function testRoot(subdirectory) {
