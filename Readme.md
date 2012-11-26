@@ -26,6 +26,11 @@ Running
 
   $ bin/kissweb <webserver port> <rootdirectory>
 
+Pushing a new version to the NPM repository
+-------------------------------------------
+
+	$ npm publish
+	
 License
 -------
 
